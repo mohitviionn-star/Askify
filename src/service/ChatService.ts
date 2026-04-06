@@ -1,6 +1,5 @@
 import {modelDetails, OpenAIModel} from "../models/model";
 import {ChatCompletion, ChatCompletionMessage, ChatCompletionRequest, ChatMessage, ChatMessagePart, Role} from "../models/ChatCompletion";
-import {OPENAI_API_KEY} from "../config";
 import {CustomError} from "./CustomError";
 import {CHAT_COMPLETIONS_ENDPOINT, MODELS_ENDPOINT} from "../constants/apiEndpoints";
 import {ChatSettings} from "../models/ChatSettings";
@@ -64,10 +63,9 @@ export class ChatService {
 
 
   static async sendMessage(messages: ChatMessage[], modelId: string): Promise<ChatCompletion> {
-    let endpoint = CHAT_COMPLETIONS_ENDPOINT;
-    let headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${OPENAI_API_KEY}`
+    const endpoint = '/api/openai';
+    const headers = {
+      'Content-Type': 'application/json',
     };
 
     const mappedMessages = await ChatService.mapChatMessagesToCompletionMessages(modelId,messages);
@@ -77,7 +75,7 @@ export class ChatService {
       messages: mappedMessages,
     };
     const response = await fetch(endpoint, {
-      method: "POST",
+      method: 'POST',
       headers: headers,
       body: JSON.stringify(requestBody),
     });
@@ -120,7 +118,6 @@ export class ChatService {
     let endpoint = CHAT_COMPLETIONS_ENDPOINT;
     let headers = {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${OPENAI_API_KEY}`
     };
 
     const requestBody: ChatCompletionRequest = {
@@ -299,44 +296,43 @@ export class ChatService {
     }
     this.models = fetch(MODELS_ENDPOINT, {
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
       },
     })
-        .then(response => {
-          if (!response.ok) {
-            return response.json().then(err => {
-              throw new Error(err.error.message);
-            });
-          }
-          return response.json();
-        })
-        .catch(err => {
-          throw new Error(err.message || err);
-        })
-        .then(data => {
-          const models: OpenAIModel[] = data.data;
-          // Filter, enrich with contextWindow from the imported constant, and sort
-          return models
-              .filter(model => model.id.startsWith("gpt-"))
-              .map(model => {
-                const details = modelDetails[model.id] || {
-                  contextWindowSize: 0,
-                  knowledgeCutoffDate: '',
-                  imageSupport: false,
-                  preferred: false,
-                  deprecated: false,
-                };
-                return {
-                  ...model,
-                  context_window: details.contextWindowSize,
-                  knowledge_cutoff: details.knowledgeCutoffDate,
-                  image_support: details.imageSupport,
-                  preferred: details.preferred,
-                  deprecated: details.deprecated,
-                };
-              })
-              .sort((a, b) => b.id.localeCompare(a.id));
-        });
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(err => {
+            throw new Error(err.error.message);
+          });
+        }
+        return response.json();
+      })
+      .catch(err => {
+        throw new Error(err.message || err);
+      })
+      .then(data => {
+        const models: OpenAIModel[] = data.data;
+        return models
+          .filter(model => model.id.startsWith('gpt-'))
+          .map(model => {
+            const details = modelDetails[model.id] || {
+              contextWindowSize: 0,
+              knowledgeCutoffDate: '',
+              imageSupport: false,
+              preferred: false,
+              deprecated: false,
+            };
+            return {
+              ...model,
+              context_window: details.contextWindowSize,
+              knowledge_cutoff: details.knowledgeCutoffDate,
+              image_support: details.imageSupport,
+              preferred: details.preferred,
+              deprecated: details.deprecated,
+            };
+          })
+          .sort((a, b) => b.id.localeCompare(a.id));
+      });
     return this.models;
   };
 }
