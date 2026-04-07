@@ -1,6 +1,7 @@
 {
-  "name": "openai-react-chat",
+  "name": "askify",
   "version": "0.1.0",
+  "description": "Askify — AI Chat Assistant powered by cutting-edge language models.",
   "license": "MIT",
   "private": true,
   "type": "module",

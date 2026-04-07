@@ -7,6 +7,7 @@ import Tooltip from "./Tooltip";
 import UserSettingsModal from './UserSettingsModal';
 import ChatShortcuts from './ChatShortcuts';
 import ConversationList from "./ConversationList";
+import AskifyLogo from "./AskifyLogo";
 
 interface SidebarProps {
   className: string;
@@ -58,7 +59,14 @@ const Sidebar: React.FC<SidebarProps> = ({className, isSidebarCollapsed, toggleS
             <div className="scrollbar-trigger relative h-full flex-1 items-start border-white/20">
               <h2 className="sr-only">Chat history</h2>
               <nav className="flex h-full flex-col p-2" aria-label="Chat history">
-                <div className="mb-1 flex flex-row gap-2">
+                {/* Brand header */}
+                <div className="flex items-center gap-2.5 px-1 pt-2 pb-3 mb-1 border-b border-black/10 dark:border-white/10">
+                  <AskifyLogo size={30}/>
+                  <span className="font-semibold ml-2 text-base text-[#a9f9e1] dark:text-white tracking-tight select-none">
+                    Askify
+                  </span>
+                </div>
+                <div className="mb-1 flex flex-row gap-2 mt-2">
                   <button className="flex px-3 min-h-[44px] py-1 items-center gap-3
                        transition-colors duration-200 dark:text-white
                        cursor-pointer text-sm rounded-md border dark:border-white/20 hover:bg-gray-500/10 h-11
