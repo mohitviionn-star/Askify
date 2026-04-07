@@ -62,7 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({className, isSidebarCollapsed, toggleS
                 {/* Brand header */}
                 <div className="flex items-center gap-2.5 px-1 pt-2 pb-3 mb-1 border-b border-black/10 dark:border-white/10">
                   <AskifyLogo size={30}/>
-                  <span className="font-semibold ml-2 text-base text-[#a9f9e1] dark:text-white tracking-tight select-none">
+                  <span className="font-semibold text-base text-[#0a7a58] dark:text-white tracking-tight select-none">
                     Askify
                   </span>
                 </div>
