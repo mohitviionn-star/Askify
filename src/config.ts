@@ -1,4 +1,2 @@
-import env from './local.env.json';
-
-export const OPENAI_DEFAULT_MODEL: string = (env as any).default_model;
-export const OPENAI_DEFAULT_SYSTEM_PROMPT: string = (env as any).default_system_prompt;
+export const OPENAI_DEFAULT_MODEL: string = import.meta.env.VITE_DEFAULT_MODEL || 'gpt-3.5-turbo';
+export const OPENAI_DEFAULT_SYSTEM_PROMPT: string = import.meta.env.VITE_DEFAULT_SYSTEM_PROMPT || 'You are a helpful assistant.';
