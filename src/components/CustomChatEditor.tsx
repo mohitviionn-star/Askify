@@ -50,11 +50,11 @@ const CustomChatEditor: React.FC = () => {
     } else {
       await chatSettingsDB.chatSettings.add(chatSettings);
     }
-    navigate('/explore');
+    navigate('/chat/explore');
   };
 
   const handleCancel = () => {
-    navigate('/explore');
+    navigate('/chat/explore');
   };
 
   const onChange = (updatedChatSettings: ChatSettings) => {

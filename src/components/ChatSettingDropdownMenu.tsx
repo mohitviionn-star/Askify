@@ -48,7 +48,7 @@ const ChatSettingDropdownMenu: React.FC<ChatSettingDropdownMenuProps> = ({
   }
 
   const onEdit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    navigate('/custom/editor/' + chatSetting?.id)
+    navigate('/chat/custom/editor/' + chatSetting?.id)
   }
 
   const onDuplicate = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -56,7 +56,7 @@ const ChatSettingDropdownMenu: React.FC<ChatSettingDropdownMenuProps> = ({
     event.stopPropagation();
     if (chatSetting) {
       const newChatSetting = {...chatSetting, id: 0, name: `${chatSetting.name} (Copy)`, author: 'user'};
-      navigate('/custom/editor/', {state: {initialChatSetting: newChatSetting}});
+      navigate('/chat/custom/editor/', {state: {initialChatSetting: newChatSetting}});
     }
   }
 
@@ -157,7 +157,7 @@ const ChatSettingDropdownMenu: React.FC<ChatSettingDropdownMenuProps> = ({
                         <Menu.Item>
                           {({active}) => (
                               <button
-                                  onClick={() => navigate(`/g/${chatSetting?.id}`, {state: {reset: Date.now()}})}
+                                  onClick={() => navigate(`/chat/g/${chatSetting?.id}`, {state: {reset: Date.now()}})}
                                   className={`flex items-center w-full text-left px-4 py-2 text-sm ${
                                       active ? 'bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'
                                   }`}

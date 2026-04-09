@@ -13,7 +13,7 @@ const ChatSettingsList: React.FC<ChatSettingsListProps> = ({chatSettings}) => {
   const navigate = useNavigate();
 
   const navigateToChatSetting = (id: number) => {
-    navigate(`/g/${id}`, {state: {reset: Date.now()}});
+    navigate(`/chat/g/${id}`, {state: {reset: Date.now()}});
   };
 
   return (

@@ -25,7 +25,7 @@ const Sidebar: React.FC<SidebarProps> = ({className, isSidebarCollapsed, toggleS
   }
 
   const handleNewChat = () => {
-    navigate('/', {state: {reset: Date.now()}});
+    navigate('/chat', {state: {reset: Date.now()}});
   }
 
   const handleOnClose = () => {
@@ -99,7 +99,7 @@ const Sidebar: React.FC<SidebarProps> = ({className, isSidebarCollapsed, toggleS
                     </button>
                   </Tooltip>
                 </div>
-                <Link to="/explore" className="flex items-center m-2 dark:bg-gray-900 dark:text-gray-100 text-gray-900">
+                <Link to="/chat/explore" className="flex items-center m-2 dark:bg-gray-900 dark:text-gray-100 text-gray-900">
                   <Squares2X2Icon  {...iconProps} className="mt-1 mr-2"/>
                   <span>{t('custom-chats-header')}</span>
                 </Link>

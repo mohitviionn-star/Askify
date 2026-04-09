@@ -54,7 +54,7 @@ const ConversationListItem: React.FC<ConversationListItemProps> = ({
     }
     setSelectedId(convo.id);
     if (!isEditingTitle) {
-      const url = convo.gid ? `/g/${convo.gid}/c/${convo.id}` : `/c/${convo.id}`;
+      const url = convo.gid ? `/chat/g/${convo.gid}/c/${convo.id}` : `/chat/c/${convo.id}`;
       navigate(url);
     }
   };

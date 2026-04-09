@@ -65,7 +65,7 @@ const ExploreCustomChats: React.FC = () => {
           <h2 className="text-xl font-bold mt-8 mb-2">{t('my-chats')}</h2>
           <button
               className="flex items-center gap-2 p-2 mb-4 w-full text-left border border-transparent rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-              onClick={() => navigate('/custom/editor')}
+              onClick={() => navigate('/chat/custom/editor')}
           >
             <div
                 className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border border-dashed border-token-border-light bg-gray-100 dark:bg-gray-900 ">

@@ -209,7 +209,7 @@ const MainPage: React.FC<MainPageProps> = ({className, isSidebarCollapsed, toggl
           } else {
             const errorMessage: string = 'Conversation ' + location.pathname + ' not found';
             NotificationService.handleError(errorMessage, CONVERSATION_NOT_FOUND);
-            navigate('/');
+            navigate('/chat');
           }
         });
     } else {
@@ -251,10 +251,10 @@ const MainPage: React.FC<MainPageProps> = ({className, isSidebarCollapsed, toggl
     setConversation(conversation);
     ConversationService.addConversation(conversation);
     if (gid) {
-      navigate(`/g/${gid}/c/${conversation.id}`);
+      navigate(`/chat/g/${gid}/c/${conversation.id}`);
       updateShowInSidebar(Number(gid), 1);
     } else {
-      navigate(`/c/${conversation.id}`);
+      navigate(`/chat/c/${conversation.id}`);
     }
   }
 
@@ -482,7 +482,7 @@ const MainPage: React.FC<MainPageProps> = ({className, isSidebarCollapsed, toggl
         NotificationService.handleSuccess("Imported conversation successfully");
 
         // redirect user to new conversation
-        navigate(`/c/${newId}`);
+        navigate(`/chat/c/${newId}`);
       };
 
       fileInput.click();
