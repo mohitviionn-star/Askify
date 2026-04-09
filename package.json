@@ -11,7 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
-    "@radix-ui/react-tooltip": "^1.2.7",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/postcss": "^4.1.11",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
